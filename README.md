@@ -6,7 +6,8 @@ Live site:
 https://fantasystats.netlify.app/login
 
 To Start App:
-  -traverse to project folder
+
+  - traverse to project folder
   - in terminal run these commands:
   - bun install
   - bun -bun run dev
