@@ -72,16 +72,24 @@ function App() {
             {" "}
           </Sider>
         )} */}
-        <Sider
+        {/* <Sider
           collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
-        ></Sider>
+        ></Sider> */}
         <Layout>
           <Header style={{ background: "white" }}>
             <Title level={3}>Fantasy Football 2023</Title>
           </Header>
-          <Content style={{ padding: 16 }}>
+          <Content
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+              padding: 16,
+            }}
+          >
             <Pages />
           </Content>
           <Footer style={{ display: "flex", justifyContent: "center" }}>

@@ -14,7 +14,7 @@ export const Leagues = () => {
   }, []);
 
   return (
-    <Card bodyStyle={{ padding: "12px 20px" }}>
+    <Card style={{ width: "90%" }} bodyStyle={{ padding: "12px 20px" }}>
       {leagues ? (
         <List
           itemLayout="horizontal"

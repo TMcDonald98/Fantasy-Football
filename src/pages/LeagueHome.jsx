@@ -20,7 +20,7 @@ export const LeagueHome = () => {
   if (rosters) console.log(rosters);
   return (
     <>
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "flex", flexDirection: "column", width: "90%" }}>
         {rosters?.[0] &&
           rosters[0].players.map((playerId, index) => (
             <PlayerCard playerId={playerId} />
