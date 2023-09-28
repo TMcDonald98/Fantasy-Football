@@ -10,31 +10,49 @@ export const PlayerCard = ({ playerId }) => {
   const [loading, setLoading] = useState(null);
   const { getPlayerById } = usePlayerContext();
   const player = getPlayerById(playerId);
-  console.log(player);
+  // console.log(player);
   return (
     <Card
+      type="inner"
       loading={!player}
       size="small"
-      bodyStyle={{ padding: 6, paddingBottom: 0 }}
-      style={{ height: 43 }}
+      bodyStyle={{ padding: 6, paddingBottom: 0, paddingRight: 8 }}
+      style={{ height: 43, marginBottom: 2 }}
     >
       {player && (
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div style={{ display: "flex" }}>
-            <span style={{ lineHeight: 0 }}>
-              <img
-                src={`https://sleepercdn.com/content/nfl/players/thumb/${player.player_id}.jpg`}
-                style={{ height: 35 }}
-              />
-              {/* Best one vvv */}
-              {/* <img
-                src={`https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/${player.espn_id}.png&h=35`}
-                style={{ height: 35 }}
-              /> */}
-              {/* <img
-              src={`https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/${player.espn_id}.png&h=35&w=35&scale=crop`}
-              style={{ height: 35 }}
-            /> */}
+            <span
+              style={{
+                width: 48,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              {/* Display espn first(best quality) then sleeper if not available, and special link for defense. */}
+              {player.espn_id ? (
+                <img
+                  src={`https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/${player.espn_id}.png&h=35`}
+                  style={{ height: 35 }}
+                />
+              ) : player.fantasy_positions[0] === "DEF" ? (
+                <>
+                  {/* <img
+                    src={`https://sleepercdn.com/images/team_logos/nfl/${player.player_id.toLowerCase()}.png`}
+                    style={{ width: 35, objectFit: "cover" }}
+                  /> */}
+                  <img
+                    src={`https://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/${player.player_id.toLowerCase()}.png&h=35&w=35`}
+                    style={{ height: 31, objectFit: "cover" }}
+                  />
+                </>
+              ) : (
+                <img
+                  src={`https://sleepercdn.com/content/nfl/players/thumb/${player.player_id}.jpg`}
+                  style={{ height: 35, objectFit: "cover" }}
+                  alt="N/A"
+                />
+              )}
             </span>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <Text style={{ lineHeight: 1 }} strong>

@@ -8,6 +8,8 @@ export const getPositionColor = (position) => {
       return "#58a7ff";
     case "TE":
       return "#ffae58";
+    case "K":
+      return "#bd66ff";
     case "DEF":
       return "#7988a1";
     default:
