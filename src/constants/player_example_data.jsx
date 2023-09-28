@@ -3,6 +3,17 @@
 //stats = live?
 //projections = future?
 
+//get actual stats
+//https://api.sleeper.app/stats/nfl/2023/3?season_type=regular&position[]=QB
+
+//get projected stats and scores
+//https://api.sleeper.app/projections/nfl/2023/4?season_type=regular&position[]=DEF&position[]=FLEX&position[]=K&position[]=QB&position[]=RB&position[]=TE&position[]=WR&order_by=ppr
+
+//get full team stats
+// https://api.sleeper.com/stats/nfl/2023?season_type=regular&position=TEAM&order_by=
+
+//get schedule
+///schedule/nfl/regular/2023
 export const examplePlayer = {
   status: "Active",
   metadata: null,
