@@ -43,7 +43,7 @@ export const LeagueHome = () => {
                 )}
 
                 <Text style={{ fontSize: 10 }} type="secondary">
-                  {getUser(roster.owner_id).display_name}
+                  {getUser(roster.owner_id)?.display_name}
                 </Text>
               </div>
             }
