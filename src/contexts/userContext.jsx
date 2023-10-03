@@ -7,7 +7,7 @@ export const useUserContext = () => {
 };
 
 export const UserProvider = ({ children }) => {
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
   const [userData, setUserData] = useState(null);
   const [leagueData, setLeagueData] = useState(null);
   const [rosterData, setRosterData] = useState(null);
@@ -49,9 +49,14 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const updateUsername = async (newUsername) => {
-    setUsername(newUsername);
-    return await fetchUserData(newUsername);
+  // const updateUsername = async (newUsername) => {
+  //   setUsername(newUsername);
+  //   return await fetchUserData(newUsername);
+  // };
+
+  const updateUserData = async (userId) => {
+    const newUserData = await fetchUserData(userId);
+    return newUserData;
   };
 
   const getLeagues = () => {
@@ -59,7 +64,7 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ getLeagues, updateUsername }}>
+    <UserContext.Provider value={{ getLeagues, updateUserData }}>
       {children}
     </UserContext.Provider>
   );

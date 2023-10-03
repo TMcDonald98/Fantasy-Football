@@ -11,13 +11,14 @@ export const PlayerCard = ({ playerId }) => {
   const { getPlayerById } = usePlayerContext();
   const player = getPlayerById(playerId);
   // console.log(player);
+  //0 = starter spot without a role filled aka empty
   return (
     <Card
       type="inner"
       loading={!player}
       size="small"
       bodyStyle={{ padding: 6, paddingBottom: 0, paddingRight: 8 }}
-      style={{ height: 43, marginBottom: 2 }}
+      style={{ height: 43, marginBottom: 2, minWidth: 220 }}
     >
       {player && (
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -32,7 +33,7 @@ export const PlayerCard = ({ playerId }) => {
               {/* Display espn first(best quality) then sleeper if not available, and special link for defense. */}
               {player.espn_id ? (
                 <img
-                  src={`https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/${player.espn_id}.png&h=35`}
+                  src={`https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/${player.espn_id}.png`}
                   style={{ height: 35 }}
                 />
               ) : player.fantasy_positions[0] === "DEF" ? (
@@ -42,7 +43,7 @@ export const PlayerCard = ({ playerId }) => {
                     style={{ width: 35, objectFit: "cover" }}
                   /> */}
                   <img
-                    src={`https://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/${player.player_id.toLowerCase()}.png&h=35&w=35`}
+                    src={`https://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/${player.player_id.toLowerCase()}.png`}
                     style={{ height: 31, objectFit: "cover" }}
                   />
                 </>

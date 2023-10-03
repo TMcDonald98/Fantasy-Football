@@ -38,11 +38,11 @@ function App() {
   const Pages = ({ children }) => {
     return (
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/leagues" element={<Leagues />} />
-        <Route path="/leagues/:leagueId" element={<LeagueHome />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/:userId/leagues" element={<Leagues />} />
+        <Route path="/:userId/:leagueId" element={<LeagueHome />} />
 
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
       </Routes>
     );
   };
