@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 export const Login = () => {
   const [username, setUsername] = useState("");
 
-  const { getLeagues, updateUsername } = useUserContext();
+  const { getLeagues, updateUserData } = useUserContext();
   const navigate = useNavigate();
 
   //get league data on submit username
   const onSubmit = async () => {
     console.log(username);
-    console.log(await updateUsername(username));
-    navigate("/leagues");
+    const userData = await updateUserData(username);
+    navigate(`/${userData[0].user_id}/leagues`);
   };
 
   return (

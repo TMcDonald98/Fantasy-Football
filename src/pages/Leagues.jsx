@@ -2,15 +2,27 @@ import { Avatar, Card, List, Spin } from "antd";
 import { useUserContext } from "../contexts/userContext";
 import { useEffect, useState } from "react";
 import { scoreType } from "../constants/playerUtilities";
-import { Link } from "react-router-dom";
+import { Link, useParams, useResolvedPath } from "react-router-dom";
 
 export const Leagues = () => {
+  const { userId } = useParams();
+  const { pathname } = useResolvedPath();
+  console.log(pathname.match(/\/([^/]+)\/([^/]+)/)?.[1]);
+
   const [leagues, setLeagues] = useState(null);
 
-  const { getLeagues } = useUserContext();
+  const { getLeagues, updateUserData } = useUserContext();
 
   useEffect(() => {
-    setLeagues(getLeagues());
+    const fetchUserData = async () => {
+      const data = await updateUserData(userId);
+      console.log(data);
+      setLeagues(data[1]);
+    };
+
+    const userLeagues = getLeagues();
+    if (userLeagues) setLeagues(userLeagues);
+    else fetchUserData();
   }, []);
 
   return (
@@ -28,7 +40,13 @@ export const Leagues = () => {
                   />
                 }
                 title={
-                  <Link to={`/leagues/${item.league_id}`}>{item.name}</Link>
+                  <Link
+                    to={`/${pathname.match(/\/([^/]+)\/([^/]+)/)?.[1]}/${
+                      item.league_id
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
                 }
                 description={`${item.total_rosters}-Team, ${scoreType(
                   item.scoring_settings
