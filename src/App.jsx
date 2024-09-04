@@ -78,8 +78,8 @@ function App() {
           onCollapse={(value) => setCollapsed(value)}
         ></Sider> */}
         <Layout>
-          <Header style={{ background: "white" }}>
-            <Title level={3}>Fantasy Football 2023</Title>
+          <Header style={{ background: "white", height: 80 }}>
+            <Title level={3}>Fantasy Football 2024</Title>
           </Header>
           <Content
             style={{

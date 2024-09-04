@@ -35,7 +35,7 @@ export const UserProvider = ({ children }) => {
   const fetchLeagueData = async (newUserData) => {
     try {
       const response = await fetch(
-        `https://api.sleeper.app/v1/user/${newUserData.user_id}/leagues/nfl/2023`
+        `https://api.sleeper.app/v1/user/${newUserData.user_id}/leagues/nfl/2024`
       );
       if (response.ok) {
         const data = await response.json();
